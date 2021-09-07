@@ -9,7 +9,7 @@ I think<br/>
 </i></b>
 </p>
 
-# Welcome!
+## Welcome!
 
 Managing large numbers of setting in a webUI can be a total
 bummer. It'd be much nicer if we could describe our ZeroTier networks
@@ -86,17 +86,12 @@ enough to demonstrate how to drive the API with Terraform. Feel free
 to replace them with real Node IDs of any devices you may wish to join
 to the networks.
 
-<p align="center">
-<img src="https://i.imgur.com/PIcjPLx.png" width="75%" alt="hello.tf" />
-</p>
-
-<p align="center">
-<img src="https://i.imgur.com/q6kQPI4.png" alt="uncomment resources" />
-</p>
-
 In your Github repo, click on `hello.tf`. There will be a little "edit" icon
 around the section with the code. Uncomment the Terraform resources
 and click the green "commit changes" button.
+
+<p align="center"><img src="https://i.imgur.com/PIcjPLx.png" width="75%" alt="hello.tf" /></p>
+<p align="center"><img src="https://i.imgur.com/q6kQPI4.png" alt="edit text" /></p>
 
 ```jsx
 resource "zerotier_network" "hello" {
@@ -128,16 +123,14 @@ resource "zerotier_member" "bob" {
 
 Queue a plan then "Confim and Apply".
 
-<p align="center">
-<img src="https://i.imgur.com/y3alCUp.png" alt="queue the plan" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/Dq7Bivj.png" width="75%" alt="queue the plan" /></p>
+<p align="center"><img src="https://i.imgur.com/eWuW0aD.png" width="75%" alt="queue the plan" /></p>
 
 After Terraform applies the plan, check out the ZeroTier Cental webui
 to confirm it was created.
 
-<p align="center">
-<img src="https://i.imgur.com/P0C0U5J.png" alt="hello zerotier" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/BWQEYwQ.png" width="75%" alt="hello zerotier" /></p>
+<p align="center"><img src="https://i.imgur.com/XXzaTAD.png" width="75%" alt="hello zerotier" /></p>
 
 ## Bridging Networks
 
@@ -155,6 +148,8 @@ Terraform module provides a slightly nicer interface, letting us use
 CIDRs for our subnets.
 
 Repeat the steps from "Hello World" with `bridging.tf`
+
+<p align="center"><img src="https://i.imgur.com/FOEHRpc.png" width="75%" alt="bridging.tf" /></p>
 
 ```jsx
 module "bridgenet" {
@@ -184,17 +179,13 @@ resource "zerotier_member" "router2" {
   network_id              = module.bridgenet.id
 }
 ```
-
-<p align="center">
-<img src="https://i.imgur.com/U0wwQtN.png" alt="queue the plan" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/EWfgCDW.png" width="75%" alt="observe planned" /></p>
+<p align="center"><img src="https://i.imgur.com/RPnMMRt.png" width="75%" alt="queue the plan" /></p>
 
 After Terraform applies the plan, check out the ZeroTier Cental webui
 to confirm it was created.
 
-<p align="center">
-<img src="https://i.imgur.com/S61AHzN.png" alt="hello zerotier" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/ZwviLen.png" width="75%" alt="hello bridgenet" /></p>
 
 ## Network Segmentation
 
@@ -204,6 +195,8 @@ network, and the green team gets access to the `green` network. Red
 and green make `yellow`.
 
 Repeat the steps from "Hello World" with `groups.tf`
+
+<p align="center"><img src="https://i.imgur.com/1VomNgu.png" width="75%" alt="groups.tf" /></p>
 
 ```jsx
 variable "segments" {
@@ -283,16 +276,12 @@ resource "zerotier_member" "yellow" {
 }
 ```
 
-<p align="center">
-<img src="https://i.imgur.com/Lf5AgFn.png" alt="queue the plan" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/1aW8a8K.png" width="75%" alt="queue the plan" /></p>
 
 After Terraform applies the plan, check out the ZeroTier Cental webui
 to confirm it was created.
 
-<p align="center">
-<img src="https://i.imgur.com/qT2Im1f.png" alt="hello zerotier" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/rNUg7pZ.png" width="75%" alt="hello zerotier" /></p>
 
 ## Many to Many
 
@@ -308,6 +297,8 @@ cloud instances via `cloudinit`. We encourage you to use the
 state safe.
 
 Repeat the steps from "Hello World" with `many2many.tf`
+
+<p align="center"><img src="https://i.imgur.com/UNom5tz.png" width="75%" alt="man2many.tf" /></p>
 
 ```jsx
 variable "letters" {
@@ -341,28 +332,19 @@ resource "zerotier_member" "shape-letters" {
 }
 ```
 
-<p align="center">
-<img src="https://i.imgur.com/lPGOwhs.png" alt="queue the plan" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/qPzd3qD.png" width="75%" alt="queue the plan" /></p>
 
 After Terraform applies the plan, check out the ZeroTier Cental webui
 to confirm it was created.
 
-<p align="center">
-<img src="https://i.imgur.com/l5vqsfz.png" alt="hello zerotier" /><br/>
-</p>
+<p align="center"><img src="https://i.imgur.com/wLQ9z7D.png" width="75%" alt="hello everything" /></p>
 
 ## Cleaning up
 
-When you're done experimenting with ZeroTier and Terraform, clean up
-by deleting all the networks. Look under your workspace's settings
-menu for "Destruction and Deletion"
+When you're done experimenting with ZeroTier and Terraform, tear everything down by queueing a destroy plan.
 
-<p align="center">
-<img src="https://i.imgur.com/gZuqacO.png" alt="destroy plan" /><br/>
-</p>
-
-Queue the destroy plan to tear everything down.
+<p align="center"><img src="https://i.imgur.com/QxF7CO1.png" alt="import repo" width="75%"/></p>
+<p align="center"><img src="https://i.imgur.com/IP06LeW.png" alt="import repo" width="75%"/></p>
 
 ## That's all folks!
 
