@@ -50,7 +50,7 @@
 # module "segments" {
 #   for_each    = var.segments
 #   source      = "zerotier/network/zerotier"
-#   version     = "1.0.0"
+#   version     = "~> 1.0"
 #   name        = each.key
 #   description = each.value.description
 #   subnets     = each.value.subnets

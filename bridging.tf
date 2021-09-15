@@ -4,7 +4,7 @@
 
 # module "bridgenet" {
 #   source      = "zerotier/network/zerotier"
-#   version     = "1.0.0"
+#   version     = "~> 1.0"
 #   name        = "bridgenet"
 #   description = "bridging example"
 #   subnets     = ["10.10.0.0/16"]
